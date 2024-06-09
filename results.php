@@ -1,20 +1,36 @@
 
-<!-- Result -->
-  <iframe name="resultFrame" src="./results.php">
-  </iframe>
-<!-- <form id="inputForm" method="post" action="results.php" target="resultFrame"> -->
+<!-- CSS -->
+<link rel="stylesheet" href="./css/style.css">
 
-<b>
+<b id="outputResult">
   <?php
-    // Code
-    if(isset($_POST['submit'])) 
-    {
-      // INPUT
-      $input = floatval($_POST['{value}']);
-    }
-    else {
-      // Default
-      echo "Results will be shown here...";
-    }
+
+  if (isset($_POST['userNum'])) {
+
+    // Get userNum, limit of 172 as any factorial past that will evaluate to Infinity
+    $userNum = min(intval($_POST['userNum']), 172);
+
+    /// Initalize Factorial Product
+    $product = 1;
+
+    // Initialize counter
+    $counter = 1;
+
+    // Do While Loop to calculate factorial
+    do {
+
+      // Amplify/Multiply product by counter
+      $product *= $counter;
+
+      // Increment Counter
+      $counter += 1;
+
+    } while ($counter <= $userNum);
+
+    // Display Result
+    echo "$product";
+
+  }
+
   ?>
 </b> 
